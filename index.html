@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Original Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        nav {
+            background-color: #333;
+            padding: 10px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px;
+        }
+        nav a:hover {
+            background-color: #555;
+        }
+        .code-section {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .code-section button {
+            padding: 20px 40px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 24px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin: 10px;
+        }
+        .code-section button:hover {
+            background-color: #0056b3;
+        }
+        input[type="text"] {
+            padding: 10px;
+            font-size: 18px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="page.html">See Categories</a>
+    </nav>
+
+    <div class="code-section">
+        <button id="getCodeBtn">Get Code</button>
+        <p id="generatedCode"></p>
+    </div>
+
+    <div class="code-section">
+        <input type="text" id="enterCodeInput" placeholder="Enter Code">
+        <button id="enterCodeBtn">Enter Code</button>
+    </div>
+
+    <div id="enterNumberMsg" style="display: none;">
+        <p>Enter a number:</p>
+        <input type="number" id="enterNumberInput" placeholder="Enter a number">
+        <button id="submitNumberBtn">Submit</button>
+    </div>
+
+    <script>
+        // Define the list of popular animals
+        
+        var popular_animals = [
+            "Dog", "Cat", "Horse", "Bird", "Fish", "Rabbit", "Mouse", "Monkey", "Elephant", "Tiger", "Lion", "Bear", "Giraffe", "Kangaroo", "Dolphin", "Whale", "Penguin", "Panda", "Wolf", "Fox", "Zebra", "Deer", "Snake", "Crocodile", "Frog", "Butterfly", "Bee", "Ant", "Sheep", "Cow", "Chicken", "Duck", "Goose", "Turkey", "Pig", "Goat", "Rat", "Bat", "Owl", "Eagle", "Parrot", "Seal", "Walrus", "Squirrel", "Raccoon", "Polar Bear", "Koala", "Ostrich", "Cheetah", "Leopard"
+        ];
+
+        var commonFoods = [
+            "Apple", "Banana", "Orange", "Strawberry", "Grapes", "Watermelon", "Pineapple", "Mango", "Peach", "Blueberry", "Carrot", "Broccoli", "Lettuce", "Tomato", "Potato", "Onion", "Garlic", "Bell pepper", "Spinach", "Cucumber", "Chicken", "Beef", "Pork", "Fish", "Egg", "Milk", "Cheese", "Yogurt", "Butter", "Bread", "Rice", "Pasta", "Pizza", "Hotdog", "Hamburger", "French fries", "Ice cream", "Chocolate", "Cake", "Cookies", "Peanut butter", "Jelly", "Cereal", "Popcorn", "Sausage", "Ham", "Turkey", "Bacon", "Soup", "Salad"
+        ];
+
+        var states  = [
+            "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"
+        ];
+
+        var Categories = [popular_animals, commonFoods, states]
+        var categoryNames = ['Animals', 'Foods', 'States']
+
+    
+        // Add event listeners after the DOM has loaded
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("getCodeBtn").addEventListener("click", function() {
+                // Generate a random code between 0000 and 9999
+                var randomCode = Math.floor(Math.random() * 100000).toString().padStart(5, '0');
+                
+                // Display the generated code
+                document.getElementById("generatedCode").textContent = "Generated Code: " + randomCode;
+            });
+    
+            document.getElementById("enterCodeBtn").addEventListener("click", function() {
+                // Get the entered code
+                var enteredCode = document.getElementById("enterCodeInput").value;
+                
+                // Hide the input field and button after entering a code
+                document.getElementById("enterCodeInput").style.display = "none";
+                this.style.display = "none"; // Hide the "Enter Code" button
+                // Optionally, display a message prompting to enter a number
+                document.getElementById("enterNumberMsg").style.display = "block";
+    
+                // Assign the entered code to a variable named seed
+                window.seed = enteredCode;
+            });
+    
+            document.getElementById("submitNumberBtn").addEventListener("click", function() {
+                // Get the entered number
+                var enteredNumber = document.getElementById("enterNumberInput").value;
+
+                
+                // Generate a random index based on the entered number
+                // var randomIndex = Math.floor(Math.random() * popular_animals.length);
+
+                // Calculate a seeded random index to select an animal from the list
+                var x = Math.sin(window.seed) * 10000;
+                var randomIndex = Math.floor((x - Math.floor(x)) * popular_animals.length);
+                // var selectedAnimal = popular_animals[randomIndex];
+
+                var randomCatNumber = Math.floor((x - Math.floor(x)) * Categories.length);
+                var CatForgame = Categories[randomCatNumber]
+                var selected = CatForgame[randomIndex];
+
+                // Calculate a seeded random number
+                var x = Math.sin(window.seed) * 10000;
+                var number = Math.floor((x - Math.floor(x)) * 4) + 1;
+
+                // Assuming user input is stored in a variable called 'enteredNumber'
+                var enteredNumber = parseInt(document.getElementById("enterNumberInput").value);
+
+                // Get the random animal from the list
+                // var selectedAnimal = popular_animals[randomIndex];
+                if (enteredNumber === number) {
+                    alert("imposter, Category: "  + categoryNames[randomCatNumber]);
+                } else {
+                    // Output the selected animal only if it's not the imposter
+                    // alert(selectedAnimal);
+                    alert("Word: " + selected + ". Category: " + categoryNames[randomCatNumber]);
+}
+                // Display the selected animal
+                // alert("Randomly selected animal: " + selectedAnimal);
+                document.getElementById("enterNumberMsg").style.display = "none";
+            });
+        });
+    </script>
+    
