@@ -1,1 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categories and Words</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .category {
+            margin-bottom: 20px;
+        }
+        .category h2 {
+            margin-bottom: 10px;
+        }
+        .word-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .word-list li {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Categories and Words</h1>
 
+        <div class="category">
+            <h2>Category 1: Animals</h2>
+            <ul class="word-list" id="category1">
+                <!-- Animal words will be inserted here dynamically -->
+            </ul>
+        </div>
+
+        <div class="category">
+            <h2>Category 2: Foods</h2>
+            <ul class="word-list" id="category2">
+                <!-- Placeholder for Category 2 -->
+            </ul>
+        </div>
+
+        <div class="category">
+            <h2>Category 3: States</h2>
+            <ul class="word-list" id="category3">
+                <!-- Placeholder for Category 3 -->
+            </ul>
+        </div>
+
+    </div>
+
+    <script>
+        var popular_animals = [
+            "Dog", "Cat", "Horse", "Bird", "Fish", "Rabbit", "Mouse", "Monkey", "Elephant", "Tiger", "Lion", "Bear", "Giraffe", "Kangaroo", "Dolphin", "Whale", "Penguin", "Panda", "Wolf", "Fox", "Zebra", "Deer", "Snake", "Crocodile", "Frog", "Butterfly", "Bee", "Ant", "Sheep", "Cow", "Chicken", "Duck", "Goose", "Turkey", "Pig", "Goat", "Rat", "Bat", "Owl", "Eagle", "Parrot", "Seal", "Walrus", "Squirrel", "Raccoon", "Polar Bear", "Koala", "Ostrich", "Cheetah", "Leopard"
+        ];
+
+        var commonFoods = [
+            "Apple", "Banana", "Orange", "Strawberry", "Grapes", "Watermelon", "Pineapple", "Mango", "Peach", "Blueberry", "Carrot", "Broccoli", "Lettuce", "Tomato", "Potato", "Onion", "Garlic", "Bell pepper", "Spinach", "Cucumber", "Chicken", "Beef", "Pork", "Fish", "Egg", "Milk", "Cheese", "Yogurt", "Butter", "Bread", "Rice", "Pasta", "Pizza", "Hotdog", "Hamburger", "French fries", "Ice cream", "Chocolate", "Cake", "Cookies", "Peanut butter", "Jelly", "Cereal", "Popcorn", "Sausage", "Ham", "Turkey", "Bacon", "Soup", "Salad"
+        ];
+
+        var states  = [
+            "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"
+        ];
+
+        // Function to populate a category with words
+        function populateCategory(categoryId, words) {
+            var categoryList = document.getElementById(categoryId);
+            words.forEach(function(word) {
+                var listItem = document.createElement("li");
+                listItem.textContent = word;
+                categoryList.appendChild(listItem);
+            });
+        }
+
+        // Populate Category 1 (Animals)
+        populateCategory("category1", popular_animals);
+
+        // Placeholder for Category 2
+        populateCategory("category2", commonFoods);
+
+        // Placeholder for Category 3
+        populateCategory("category3", states);
+    </script>
+</body>
+</html>
