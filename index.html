@@ -15,7 +15,10 @@
             align-items: center;
             justify-content: center;
             height: 100vh;
+
         }
+
+
         nav {
             background-color: #333;
             padding: 10px;
@@ -54,9 +57,18 @@
             border-radius: 5px;
             border: 1px solid #ccc;
         }
+
+        #refreshButton {
+            font-size: 18px;
+            padding: 10px 20px;
+            margin-bottom: 20px; /* Add margin to separate from other elements */
+            margin-top: 50px;
+        }
+
     </style>
 </head>
 <body>
+    <h1 style="font-size: 76px; color: #ff4500; text-align: center; font-family: 'Comic Sans MS', cursive, sans-serif;">Guess the Imposter</h1>
     <nav>
         <a href="page.html">See Categories</a>
     </nav>
@@ -76,6 +88,8 @@
         <input type="number" id="enterNumberInput" placeholder="Enter a number">
         <button id="submitNumberBtn">Submit</button>
     </div>
+
+    <button id="refreshButton" onclick="refreshPage()">Refresh</button>
 
     <script>
         // Define the list of popular animals
@@ -162,5 +176,10 @@
                 document.getElementById("enterNumberMsg").style.display = "none";
             });
         });
+
+        function refreshPage() {
+            window.location.reload();
+        }
+
     </script>
     
