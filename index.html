@@ -85,7 +85,7 @@
 
     <div id="enterNumberMsg" style="display: none;">
         <p>Enter a number:</p>
-        <input type="number" id="enterNumberInput" placeholder="Enter a number">
+        <input type="number" id="enterNumberInput" placeholder="Enter a number 1-4">
         <button id="submitNumberBtn">Submit</button>
     </div>
 
@@ -151,12 +151,13 @@
                 var randomIndex = Math.floor((x - Math.floor(x)) * popular_animals.length);
                 // var selectedAnimal = popular_animals[randomIndex];
 
-                var randomCatNumber = Math.floor((x - Math.floor(x)) * Categories.length);
+                var y = Math.sin(x) * 10000
+                var randomCatNumber = Math.floor((y - Math.floor(y)) * Categories.length);
                 var CatForgame = Categories[randomCatNumber]
                 var selected = CatForgame[randomIndex];
 
                 // Calculate a seeded random number
-                var x = Math.sin(window.seed) * 10000;
+                var x = Math.sin(window.seed) * 100000;
                 var number = Math.floor((x - Math.floor(x)) * 4) + 1;
 
                 // Assuming user input is stored in a variable called 'enteredNumber'
