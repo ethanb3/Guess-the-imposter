@@ -75,6 +75,20 @@
             </ul>
         </div>
 
+        <div class="category">
+            <h2>Category 5: Items</h2>
+            <ul class="word-list" id="category5">
+                <!-- Placeholder for Category 3 -->
+            </ul>
+        </div>
+
+        <div class="category">
+            <h2>Category 6: People</h2>
+            <ul class="word-list" id="category6">
+                <!-- Placeholder for Category 3 -->
+            </ul>
+        </div>
+
     </div>
 
     <script>
@@ -93,6 +107,14 @@
         var sports = [
             "Soccer", "Basketball", "Cricket", "Ice Hockey", "Field Hockey", "Tennis", "Volleyball", "Ping Pong", "Pickle Ball", "Spike Ball", "Baseball", "Football", "Rugby", "Golf", "Short distance running", "Long distance running", "Field Events (long jump, pole vault, …)", "Badminton", "Boxing", "Swimming", "Karate", "Car Racing", "Chess", "Cycling", "Gymnastics", "Handball", "Wrestling", "Skiing", "Snow Boarding", "Horse Racing", "Water Polo", "Bowling", "Archery", "Cheerleading", "Curling", "Darts", "Dodgeball", "Fencing", "Figure Skating", "Fishing", "Kickball", "Lacrosse", "Rowing", "Surfing", "Ultimate Frisbee", "Dancing", "Skate Boarding", "Quidditch", "Gaga", "Rock Climbing"
         ]
+
+        var items = [
+            "Pen", "Notebook", "Phone", "Laptop", "Chair", "Table", "Lamp", "Glasses", "Headphones", "Backpack", "Shoes", "Jacket", "Hat", "Umbrella", "Towel", "Toothbrush", "Soap", "Mirror", "Hairbrush", "Deodorant/Perfume/Cologne", "Sunglasses", "Wallet", "Passport", "Charger", "Earbuds", "Gloves", "Scarf", "Water bottle", "Utensils", "Frying pan", "Bowl", "Sponge", "Trash", "Vacuum cleaner", "Mop", "Bucket", "Laundry", "Thermometer", "Flashlight", "Batteries", "Matches/lighter", "Candle", "Fire extinguisher", "Hammer", "Tape measure", "Paint", "Tape", "Glue", "Sleeping bag", "Compass"
+        ];
+
+        var people = [
+            "Joe Biden", "Donald Trump", "Barack Obama", "George Washington", "Thomas Jefferson", "Abraham Lincoln", "Joel Embiid", "Taylor Swift", "Ariana Grande", "Lebron James", "Will Smith", "Adam Sandler", "Kevin Hart", "Dwayne 'the rock' Johnson", "Michael Jordan", "Tom Holland", "Zendaya", "Tom Cruise", "Tom Hanks", "Leonardo DiCaprio", "Bruno Mars", "Drake", "Rhianna", "Walt Disney", "Kanye West", "Ed Sheeran", "Justin Bieber", "Margot Robbie", "Ryan Gosling", "Vincent Van Gogh", "Mona Lisa", "Jesus Christ", "Moses", "Leonardo Da Vinci", "Princess Diana", "Queen Elizabeth", "Michael Jackson", "Lady Gaga", "Jennifer Lopez", "Michelle Obama", "Britney Spears", "Elvis Presley", "James Harden", "Tyrese Maxey", "Travis Kelce", "Emma Watson", "Kim Kardashian", "Mr Beast", "Martin Luther King Jr.", "Albert Einstein"
+        ];
 
         // Function to populate a category with words
         function populateCategory(categoryId, words) {
@@ -114,6 +136,10 @@
         populateCategory("category3", states);
 
         populateCategory("category4", sports);
+
+        populateCategory("category5", items);
+
+        populateCategory("category6", people);
 
     </script>
 </body>
