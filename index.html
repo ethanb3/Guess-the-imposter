@@ -70,11 +70,52 @@
 <body>
     <h1 style="font-size: 76px; color: #ff4500; text-align: center; font-family: 'Comic Sans MS', cursive, sans-serif;">Guess the Imposter</h1>
 
-    <h1 style="font-size: 24px;">New update comes out 4/4</h1>
-    
     <nav>
         <a href="page.html">See Categories</a>
     </nav>
+
+    <h1 style="font-size: 20px;">Choose Categories</h1>
+
+    <div id="buttonContainer" style="display: flex;">
+        <button class="bigButton" onclick="updateVariable(1)" id="button1" style="font-size: 20px;">Animals</button>
+        <button class="bigButton" onclick="updateVariable(2)" id="button2" style="font-size: 20px;">Foods</button>
+        <button class="bigButton" onclick="updateVariable(3)" id="button3" style="font-size: 20px;">States</button>
+        <button class="bigButton" onclick="updateVariable(4)" id="button4" style="font-size: 20px;">Sports</button>
+        <button class="bigButton" onclick="updateVariable(5)" id="button5" style="font-size: 20px;">Items</button>
+        <button class="bigButton" onclick="updateVariable(6)" id="button6" style="font-size: 20px;">People</button>
+    </div>
+
+    <h1 style="font-size: 20px;">Choose number of people</h1>
+
+
+    <div id="buttonContainer" style="display: flex;">
+        <button class="numberButton" onclick="if (b === 0) numPeople(3)" id="people3" style="font-size: 20px;">3</button>
+        <button class="numberButton" onclick="if (b === 0) numPeople(4)" id="people4" style="font-size: 20px;">4</button>
+        <button class="numberButton" onclick="if (b === 0) numPeople(5)" id="people5" style="font-size: 20px;">5</button>
+        <button class="numberButton" onclick="if (b === 0) numPeople(6)" id="people6" style="font-size: 20px;">6</button>
+        <button class="numberButton" onclick="if (b === 0) numPeople(7)" id="people7" style="font-size: 20px;">7</button>
+        <button class="numberButton" onclick="if (b === 0) numPeople(8)" id="people8" style="font-size: 20px;">8</button>
+    
+    </div>
+
+    
+    <style>
+        .bigButton {
+            /* Add your button styles here */
+            padding: 30px 30px;
+            margin: 5px;
+        }
+    </style>
+
+<style>
+    .numberButton {
+        /* Add your button styles here */
+        padding: 22.5px 50px;
+        margin: 10px;
+    }
+</style>
+
+
 
     <div class="code-section">
         <button id="getCodeBtn">Get Code</button>
@@ -88,14 +129,55 @@
 
     <div id="enterNumberMsg" style="display: none;">
         <p>Enter a number:</p>
-        <input type="number" id="enterNumberInput" placeholder="Enter a number 1-4">
-        <button id="submitNumberBtn">Submit</button>
+        <input type="number" id="enterNumberInput" placeholder="Enter your own number">
+        <button id="submitNumberBtn">Get word</button>
     </div>
+    
 
     <button id="refreshButton" onclick="refreshPage()">Refresh</button>
 
     <script>
         // Define the list of popular animals
+
+        var a = 63;
+        var b = 0;
+        var catList = []
+    // Function to update the variable 'a' and style the clicked button
+        function updateVariable(category6) {
+            if (a == 63){
+                a = 0;
+            }
+            number = 2 ** (category6 - 1) ;
+            a = number + a; // Update the variable 'a' with the clicked button number
+            console.log("Variable 'a' is now:", a); // Optional: log the variable 'a' to the console
+
+            // Change the background color of the clicked button to gray
+                var clickedButton = document.getElementById("button" + category6);
+                clickedButton.style.backgroundColor = "lightgray";
+            
+            // Disable pointer events to prevent further clicks on the button
+            clickedButton.disabled = true;
+        }
+
+        // need to use this for after reciving code
+        // for (var i = 0; i < numbers.length; i++) {
+        //     if (a >= numbers[i]) {
+        //         catList.push(numbers.length - i); // Pushing the value based on position in the array
+        //         a -= numbers[i];
+        //     }
+        // }
+
+        function numPeople(peopleNumber) {
+            b = peopleNumber; // Update the variable 'a' with the clicked button number
+            console.log("Variable 'b' is now:", b); // Optional: log the variable 'a' to the console
+
+            // Change the background color of the clicked button to gray
+                var clickedButton = document.getElementById("people" + peopleNumber);
+                clickedButton.style.backgroundColor = "lightgray";
+                
+                // Disable pointer events to prevent further clicks on the button
+                clickedButton.disabled = true;
+            }
         
         var popular_animals = [
             "Dog", "Cat", "Horse", "Bird", "Fish", "Rabbit", "Mouse", "Monkey", "Elephant", "Tiger", "Lion", "Bear", "Giraffe", "Kangaroo", "Dolphin", "Whale", "Penguin", "Panda", "Wolf", "Fox", "Zebra", "Deer", "Snake", "Crocodile", "Frog", "Butterfly", "Bee", "Ant", "Sheep", "Cow", "Chicken", "Duck", "Goose", "Turkey", "Pig", "Goat", "Rat", "Bat", "Owl", "Eagle", "Parrot", "Seal", "Walrus", "Squirrel", "Raccoon", "Polar Bear", "Koala", "Ostrich", "Cheetah", "Leopard"
@@ -112,25 +194,86 @@
         var sports = [
             "Soccer", "Basketball", "Cricket", "Ice Hockey", "Field Hockey", "Tennis", "Volleyball", "Ping Pong", "Pickle Ball", "Spike Ball", "Baseball", "Football", "Rugby", "Golf", "Short distance running", "Long distance running", "Field Events (long jump, pole vault, …)", "Badminton", "Boxing", "Swimming", "Karate", "Car Racing", "Chess", "Cycling", "Gymnastics", "Handball", "Wrestling", "Skiing", "Snow Boarding", "Horse Racing", "Water Polo", "Bowling", "Archery", "Cheerleading", "Curling", "Darts", "Dodgeball", "Fencing", "Figure Skating", "Fishing", "Kickball", "Lacrosse", "Rowing", "Surfing", "Ultimate Frisbee", "Dancing", "Skate Boarding", "Quidditch", "Gaga", "Rock Climbing"
         ]
+        
+        var items = [
+            "Pen", "Notebook", "Phone", "Laptop", "Chair", "Table", "Lamp", "Glasses", "Headphones", "Backpack", "Shoes", "Jacket", "Hat", "Umbrella", "Towel", "Toothbrush", "Soap", "Mirror", "Hairbrush", "Deodorant/Perfume/Cologne", "Sunglasses", "Wallet", "Passport", "Charger", "Earbuds", "Gloves", "Scarf", "Water bottle", "Utensils", "Frying pan", "Bowl", "Sponge", "Trash", "Vacuum cleaner", "Mop", "Bucket", "Laundry", "Thermometer", "Flashlight", "Batteries", "Matches/lighter", "Candle", "Fire extinguisher", "Hammer", "Tape measure", "Paint", "Tape", "Glue", "Sleeping bag", "Compass"
+        ];
 
-        var Categories = [popular_animals, commonFoods, states, sports]
-        var categoryNames = ['Animals', 'Foods', 'States', 'Sports']
+        var people = [
+            "Joe Biden", "Donald Trump", "Barack Obama", "George Washington", "Thomas Jefferson", "Abraham Lincoln", "Joel Embiid", "Taylor Swift", "Ariana Grande", "Lebron James", "Will Smith", "Adam Sandler", "Kevin Hart", "Dwayne 'the rock' Johnson", "Michael Jordan", "Tom Holland", "Zendaya", "Tom Cruise", "Tom Hanks", "Leonardo DiCaprio", "Bruno Mars", "Drake", "Rhianna", "Walt Disney", "Kanye West", "Ed Sheeran", "Justin Bieber", "Margot Robbie", "Ryan Gosling", "Vincent Van Gogh", "Mona Lisa", "Jesus Christ", "Moses", "Leonardo Da Vinci", "Princess Diana", "Queen Elizabeth", "Michael Jackson", "Lady Gaga", "Jennifer Lopez", "Michelle Obama", "Britney Spears", "Elvis Presley", "James Harden", "Tyrese Maxey", "Travis Kelce", "Emma Watson", "Kim Kardashian", "Mr Beast", "Martin Luther King Jr.", "Albert Einstein"
+        ];
+
+
+        var Categories = [popular_animals, commonFoods, states, sports, items, people]
+        var categoryNames = ['Animals', 'Foods', 'States', 'Sports', 'Items', 'People']
 
     
         // Add event listeners after the DOM has loaded
         document.addEventListener("DOMContentLoaded", function() {
             document.getElementById("getCodeBtn").addEventListener("click", function() {
                 // Generate a random code between 0000 and 9999
-                var randomCode = Math.floor(Math.random() * 100000).toString().padStart(5, '0');
-                
+                // var a = 1
+                var randomCode = Math.floor(Math.random() * 10000).toString().padStart(5, '0');
+                var Code = randomCode * 10 + 100000 * a + b
+
                 // Display the generated code
-                document.getElementById("generatedCode").textContent = "Generated Code: " + randomCode;
+                // document.getElementById("generatedCode").textContent = "Generated Code: " + Code;
+                document.getElementById("generatedCode").innerHTML = "<span style='font-size: 24px;'>Generated Code: " + Code + "</span>";
+
             });
+
+
+            function giveWord(code, number){
+                // alert("Cheese");
+                number = number;
+                code = code;
+                var seed = Math.floor((code % 100000) / 10);
+                var numbers = [32, 16, 8, 4, 2, 1];
+                CatNumber = Math.floor(code / 100000);
+                var catList = [];
+                for (var i = 0; i < numbers.length; i++) {
+                    if (CatNumber >= numbers[i]) {
+                        catList.push(numbers.length - i); // Pushing the value based on position in the array
+                        CatNumber -= numbers[i];
+                    }
+                }
+                var x = Math.sin(seed) * 10000;
+                var xx = Math.sin(x) * 10000;
+                var randomCatIndex = Math.floor((xx - Math.floor(xx)) * catList.length);
+                var randomCatNumber = catList[randomCatIndex];
+                var CatForgame = Categories[randomCatNumber - 1];
+
+                // getting the word given category
+                var e = Math.sin(seed) * 20491;
+                var ee = Math.sin(e) * 10000;
+                var randomIndex = Math.floor((ee - Math.floor(ee)) * 50);
+                var selected = CatForgame[randomIndex];
+                
+                NumPlayers = code % 10;
+                var y = Math.sin(seed) * 8254017;
+                var yy = Math.sin(y) * 10000;
+                var imposterNumber = Math.floor((yy - Math.floor(yy)) * NumPlayers) + 1;
+                // alert("Imposter Number: " + imposterNumber + ", Number: " + number);
+
+
+                if (imposterNumber == number) {
+                    alert("imposter, Category: "  + categoryNames[randomCatNumber - 1]);
+                } else {
+                    // Output the selected animal only if it's not the imposter
+                    // alert(selectedAnimal);
+                    alert("Word: " + selected + ". Category: " + categoryNames[randomCatNumber - 1]);
+                }
+
+
+                
+            }
+
+
     
             document.getElementById("enterCodeBtn").addEventListener("click", function() {
                 // Get the entered code
                 var enteredCode = document.getElementById("enterCodeInput").value;
-                
+
                 // Hide the input field and button after entering a code
                 document.getElementById("enterCodeInput").style.display = "none";
                 this.style.display = "none"; // Hide the "Enter Code" button
@@ -140,44 +283,32 @@
                 // Assign the entered code to a variable named seed
                 window.seed = enteredCode;
             });
-    
+            clickedTimes = 0;
             document.getElementById("submitNumberBtn").addEventListener("click", function() {
+
+                clickedTimes = clickedTimes + 1;
+                // alert(clickedTimes);
                 // Get the entered number
                 var enteredNumber = document.getElementById("enterNumberInput").value;
+                enteredCode = window.seed;
 
+                firstTwo = Math.floor(enteredCode / 100000);
+                lastOne = enteredCode % 10;
+                middleFour = Math.floor((enteredCode % 100000) / 10);
+                placeholder = Math.sin(middleFour) * 2532 * clickedTimes;
+                midFour = Math.floor((placeholder - Math.floor(placeholder)) * 10000);
+                enteredCode = firstTwo * 100000 + midFour * 10 + lastOne;
+                // alert(enteredCode);
+                giveWord(enteredCode, enteredNumber);
+                // firstTwo = Math.floor(enteredCode / 100000);
+                // lastOne = enteredCode % 10;
+                // middleFour = Math.floor((enteredCode % 100000) / 10);
+                // placeholder = Math.sin(middleFour) * 100000;
+                // midFour = Math.floor((placeholder - Math.floor(placeholder)) * 10000);
+                // enteredCode = firstTwo * 100000 + midFour * 10 + lastOne;
+                // giveWord(enteredCode, enteredNumber);
                 
-                // Generate a random index based on the entered number
-                // var randomIndex = Math.floor(Math.random() * popular_animals.length);
-
-                // Calculate a seeded random index to select an animal from the list
-                var x = Math.sin(window.seed) * 10000;
-                var randomIndex = Math.floor((x - Math.floor(x)) * popular_animals.length);
-                // var selectedAnimal = popular_animals[randomIndex];
-
-                var y = Math.sin(x) * 10000
-                var randomCatNumber = Math.floor((y - Math.floor(y)) * Categories.length);
-                var CatForgame = Categories[randomCatNumber]
-                var selected = CatForgame[randomIndex];
-
-                // Calculate a seeded random number
-                var x = Math.sin(window.seed) * 8254017;
-                var number = Math.floor((x - Math.floor(x)) * 4) + 1;
-
-                // Assuming user input is stored in a variable called 'enteredNumber'
-                var enteredNumber = parseInt(document.getElementById("enterNumberInput").value);
-
-                // Get the random animal from the list
-                // var selectedAnimal = popular_animals[randomIndex];
-                if (enteredNumber === number) {
-                    alert("imposter, Category: "  + categoryNames[randomCatNumber]);
-                } else {
-                    // Output the selected animal only if it's not the imposter
-                    // alert(selectedAnimal);
-                    alert("Word: " + selected + ". Category: " + categoryNames[randomCatNumber]);
-}
-                // Display the selected animal
-                // alert("Randomly selected animal: " + selectedAnimal);
-                document.getElementById("enterNumberMsg").style.display = "none";
+                // document.getElementById("enterNumberMsg").style.display = "none";
             });
         });
 
